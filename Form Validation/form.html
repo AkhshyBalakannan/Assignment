@@ -13,17 +13,16 @@
     <div class="container">
         <h2>EVENT REGISTERATION FORM</h2>
         <div class="formData">
-            <form action="">
+            <form>
                 <table cellspacing="1" align="center" cellpadding="14" border="0">
                     <tr>
                         <td>
-                            <!--align="right" -->
                             <label for="Name">Name</label>
                         </td>
                         <td class="fullname">
-                            <input type="text" name="FirstName" id="Name">
+                            <input type="text" name="FirstName" class="firstName" id="Name">
                             <small>First Name</small>
-                            <input type="text" name="LastName" id="Name">
+                            <input type="text" name="LastName" class="lastName" id="Name">
                             <small>Last Name</small>
                         </td>
                     </tr>
@@ -64,7 +63,7 @@
                         </td>
                         <td>
                             <select name="subject" id="subject">
-                                <option value=" ">Choose an option</option>
+                                <option value="false">Choose an option</option>
                                 <option value="">...</option>
                                 <option value="">...</option>
                                 <option value="">...</option>
@@ -83,12 +82,12 @@
                 </div>
 
                 <div>
-                    <button type="submit">Submit</button>
-
+                    <button>Submit</button>
                 </div>
             </form>
         </div>
     </div>
+    <script src="form.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Application</title>
+</head>
+
+<body>
+    <div id="chat">
+        <input id="firstname" type="text" placeholder="Name">
+        <input id="message" type="text" placeholder="Message">
+        <button id="send">Send</button>
+        <div id="output"></div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js"
+        integrity="sha512-iZIBSs+gDyTH0ZhUem9eQ1t4DcEn2B9lHxfRMeGQhyNdSUz+rb+5A3ummX6DQTOIs1XK0gOteOg/LPtSo9VJ+w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- <script src="/public/websocket.js"> -->
+    <script>
+        const socket = io.connect('http://localhost:3000');
+
+        const message = document.getElementById('message');
+        const name = document.getElementById('firstname');
+
+        const btn = document.getElementById('send');
+        const output = document.getElementById('output');
+
+        btn.addEventListener('click', () => {
+            socket.emit('chat', {
+                message: message.value,
+                firstname: firstname.value
+            })
+            message.value = " ";
+        })
+
+        socket.on('chat', function (data) {
+            output.innerHTML += '<p><strong>' + data.firstname + ':</strong>' + data.message + '</p>';
+        })
+
+    </script>
+</body>
+
+</html>
